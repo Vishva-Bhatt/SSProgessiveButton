@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		831A7B9C26760D76006876C7 /* SplashStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831A7B9B26760D76006876C7 /* SplashStruct.swift */; };
 		835656E52672605300E9FAEC /* SSProgessiveButtonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835656E42672605300E9FAEC /* SSProgessiveButtonApp.swift */; };
 		835656E72672605300E9FAEC /* SSProgressiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835656E62672605300E9FAEC /* SSProgressiveButton.swift */; };
 		835656E92672605500E9FAEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835656E82672605500E9FAEC /* Assets.xcassets */; };
 		835656EC2672605500E9FAEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 835656EB2672605500E9FAEC /* Preview Assets.xcassets */; };
+		83A726092679D3E600687EBF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A726082679D3E600687EBF /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		831A7B9B26760D76006876C7 /* SplashStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStruct.swift; sourceTree = "<group>"; };
 		835656E12672605300E9FAEC /* SSProgessiveButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSProgessiveButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		835656E42672605300E9FAEC /* SSProgessiveButtonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSProgessiveButtonApp.swift; sourceTree = "<group>"; };
 		835656E62672605300E9FAEC /* SSProgressiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSProgressiveButton.swift; sourceTree = "<group>"; };
 		835656E82672605500E9FAEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		835656EB2672605500E9FAEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		835656ED2672605500E9FAEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83A726082679D3E600687EBF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			children = (
 				835656E42672605300E9FAEC /* SSProgessiveButtonApp.swift */,
 				835656E62672605300E9FAEC /* SSProgressiveButton.swift */,
-				831A7B9B26760D76006876C7 /* SplashStruct.swift */,
+				83A726082679D3E600687EBF /* CustomButton.swift */,
 				835656E82672605500E9FAEC /* Assets.xcassets */,
 				835656ED2672605500E9FAEC /* Info.plist */,
 				835656EA2672605500E9FAEC /* Preview Content */,
@@ -141,9 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83A726092679D3E600687EBF /* CustomButton.swift in Sources */,
 				835656E72672605300E9FAEC /* SSProgressiveButton.swift in Sources */,
 				835656E52672605300E9FAEC /* SSProgessiveButtonApp.swift in Sources */,
-				831A7B9C26760D76006876C7 /* SplashStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

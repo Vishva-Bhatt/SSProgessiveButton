@@ -11,7 +11,10 @@ import SwiftUI
 struct SSProgessiveButtonApp: App {
     var body: some Scene {
         WindowGroup {
-            SSProgressiveButton()
+            let processTimer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { timer in
+                
+            }
+            SSProgressiveButton(processTimer: processTimer)
         }
     }
 }

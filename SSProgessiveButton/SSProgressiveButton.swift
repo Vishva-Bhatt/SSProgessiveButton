@@ -10,28 +10,50 @@ import SwiftUI
 struct SSProgressiveButton: View {
     
     @State private var animationOn = false
-
+    @State var loadingProgress: Float = 0.0
+    @State var processTimer : Timer
+ 
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
             HStack {
                 Button(action: {
-                    self.changeBackgroundColor()
+                     self.changeBackgroundColor()
                 }, label: {
-                    CustomButton()
+                    VStack(alignment: .center, spacing: 0.0) {
+                        CustomButton(animation: self.$animationOn, loadingProgress: self.$loadingProgress)
+                        ProgressBar(value: (self.$loadingProgress))
+                            .frame(height: 4.0)
+                            .offset(x: 2, y: 11)
+                    }
+                    
                 })
-                .frame(width: UIScreen.main.bounds.width - 40, height: 50.0)
+                .frame(width: UIScreen.main.bounds.width - 40, height: 60.0)
                 .background(animationOn ? Color.green : Color.white)
                 .cornerRadius(10)
-                .animation((Animation.linear).delay(0.5))
             }
+            
         }
         
     }
     
     func changeBackgroundColor() {
-        withAnimation(.easeIn) {
-            self.animationOn.toggle()
+        self.animationOn.toggle()
+        
+        if (processTimer.isValid && self.animationOn == false) {
+            processTimer.invalidate()
+            loadingProgress = 0
+            return
+        }
+
+        processTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            if loadingProgress <= 1.0 {
+                withAnimation {
+                    loadingProgress += 0.015
+                    print("progress \(loadingProgress)")
+
+                }
+            }
         }
     }
     
@@ -39,26 +61,9 @@ struct SSProgressiveButton: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SSProgressiveButton()
-    }
-}
-
-struct CustomButton: View {
-    
-    var body: some View {
-        HStack(alignment: .center, spacing: 15, content: {
-            ZStack {
-                Circle()
-                    .strokeBorder(Color.black,lineWidth: 3)
-                    .frame(width: 33, height: 33)
-                Image(systemName: "arrow.down")
-                    .font(Font.title3.weight(.medium))
-                    .accentColor(.black)
-            }
-            Text("Download")
-                .foregroundColor(.black)
-                .fontWeight(.medium)
-                .font(.title2)
-        })
+        let processTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            
+        }
+        SSProgressiveButton(processTimer: processTimer)
     }
 }
