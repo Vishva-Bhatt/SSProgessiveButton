@@ -18,21 +18,24 @@ struct SSProgressiveButton: View {
             Color.black.edgesIgnoringSafeArea(.all)
             HStack {
                 Button(action: {
-                     self.changeBackgroundColor()
+                    self.changeBackgroundColor()
                 }, label: {
                     VStack(alignment: .center, spacing: 0.0) {
-                        CustomButton(animation: self.$animationOn, loadingProgress: self.$loadingProgress)
+                        CustomButton(shouldAnimate: self.$animationOn, loadingProgress: self.$loadingProgress)
                         ProgressBar(value: (self.$loadingProgress))
                             .frame(height: 4.0)
-                            .offset(x: 2, y: 11)
+                            .offset(x: 2, y: 8)
                     }
                     
                 })
+                .background(
+                    ButtonBackground(animationOn: self.$animationOn)
+                        .frame(width: UIScreen.main.bounds.width - 40, height: 65)
+                )
                 .frame(width: UIScreen.main.bounds.width - 40, height: 60.0)
-                .background(animationOn ? Color.green : Color.white)
+                .background(Color.white)
                 .cornerRadius(10)
             }
-            
         }
         
     }
@@ -40,19 +43,26 @@ struct SSProgressiveButton: View {
     func changeBackgroundColor() {
         self.animationOn.toggle()
         
-        if (processTimer.isValid && self.animationOn == false) {
-            processTimer.invalidate()
-            loadingProgress = 0
+        func stopTimer() {
+            self.processTimer.invalidate()
+            self.loadingProgress = 0
+            self.animationOn = false
             return
+        }
+        
+        if (processTimer.isValid && self.animationOn == false) {
+            stopTimer()
         }
 
         processTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
             if loadingProgress <= 1.0 {
                 withAnimation {
-                    loadingProgress += 0.015
+                    loadingProgress += 0.15
                     print("progress \(loadingProgress)")
-
                 }
+            }
+            else if loadingProgress >= 1 {
+                stopTimer()
             }
         }
     }
